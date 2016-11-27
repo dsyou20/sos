@@ -44,7 +44,9 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
 
     }
     @IBAction func Upload(_ sender: UIButton) {
+        uploadBtn.setTitle("...", for: .normal)
         self.upload()
+        
     }
     
  
@@ -65,7 +67,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
             .responseJSON { response in
                 print("response : ",response)
         }
-        
+        uploadBtn.setTitle("Upload", for: .normal)
     }
     
   
