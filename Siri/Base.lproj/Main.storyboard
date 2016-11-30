@@ -22,13 +22,43 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="z53-zY-o4d"/>
                         <segue destination="Ias-eh-a6d" kind="relationship" relationship="viewControllers" id="w2S-ZO-8Dq"/>
+                        <segue destination="Hes-7H-ByH" kind="relationship" relationship="viewControllers" id="dI7-uF-08F"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Va6-xF-39e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1209" y="-103"/>
         </scene>
-        <!--Item-->
+        <!--파일리스트-->
+        <scene sceneID="cOZ-Zd-HTn">
+            <objects>
+                <tableViewController id="Hes-7H-ByH" customClass="Filelist" customModule="Siri" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gG4-gY-rQi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="h1u-xk-8Wa">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h1u-xk-8Wa" id="cYZ-aQ-Odv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Hes-7H-ByH" id="kRy-qc-Ojl"/>
+                            <outlet property="delegate" destination="Hes-7H-ByH" id="v3R-Px-hcb"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="파일리스트" id="5ko-76-fol"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qy5-vH-CSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-166" y="164"/>
+        </scene>
+        <!--Rec-->
         <scene sceneID="0YJ-zt-OXG">
             <objects>
                 <viewController id="Ias-eh-a6d" customClass="Newrecord" customModule="Siri" customModuleProvider="target" sceneMemberID="viewController">
@@ -56,31 +86,34 @@
                                     <action selector="Upload:" destination="Ias-eh-a6d" eventType="touchUpInside" id="sUm-qE-pX2"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hy6-IR-QiQ">
-                                <rect key="frame" x="61" y="348" width="253" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPa-Xm-Pnc">
                                 <rect key="frame" x="67" y="243" width="84" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <state key="normal" title="Rec"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="파일분류" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbH-GN-DyB">
+                                <rect key="frame" x="126" y="367" width="123" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gA5-Qv-kmc"/>
+                    <tabBarItem key="tabBarItem" title="Rec" id="gA5-Qv-kmc"/>
                     <connections>
                         <outlet property="playBtn" destination="c0B-LK-hQB" id="uG7-7y-oNT"/>
-                        <outlet property="progressBar" destination="hy6-IR-QiQ" id="3FH-2m-9Nf"/>
                         <outlet property="recordButton" destination="GPa-Xm-Pnc" id="wCd-Zj-VIO"/>
+                        <outlet property="resultLabel" destination="RbH-GN-DyB" id="TPq-bT-MRu"/>
                         <outlet property="uploadBtn" destination="TLp-Vm-lFX" id="xoK-Vw-Huh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRq-Rv-okg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1210" y="725"/>
+            <point key="canvasLocation" x="-1210.4000000000001" y="724.58770614692662"/>
         </scene>
-        <!--음서인식-->
+        <!--음성인식-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Siri" customModuleProvider="target" sceneMemberID="viewController">
@@ -92,7 +125,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Siri인듯 Siri 아닌 Siri같은 너" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtM-HG-XED">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="음성인식" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtM-HG-XED">
                                 <rect key="frame" x="65.5" y="59" width="245" height="92"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="92" id="4W9-pJ-fdN"/>
@@ -102,7 +135,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is the UITextView" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-YE-xML">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="음성인식 결과" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-YE-xML">
                                 <rect key="frame" x="16" y="187" width="343" height="291"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -131,7 +164,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wF6-O8-cvx" secondAttribute="bottom" constant="30" id="rMQ-yb-tCj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="음서인식" id="40W-x3-2Mg"/>
+                    <tabBarItem key="tabBarItem" title="음성인식" id="40W-x3-2Mg"/>
                     <connections>
                         <outlet property="microphoneButton" destination="wF6-O8-cvx" id="V9V-fM-n1g"/>
                         <outlet property="textView" destination="RL2-YE-xML" id="WCI-r4-v5k"/>

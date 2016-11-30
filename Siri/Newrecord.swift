@@ -17,8 +17,10 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     //TODO : Upload....
     
     
+    //var audioFilename = getDocumentsDirectory().appendingPathComponent("recording.pcm")
+
     
-    
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var recordButton: UIButton!
@@ -51,22 +53,52 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     
  
     func upload() {
-        
-        
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.wav")
-        let fileURL = Bundle.main.url(forResource:"document",withExtension:"wav")
-        
-        
-        Alamofire.upload(audioFilename, to: "http://163.239.169.54:5000/uploads")
-            .uploadProgress { progress in // main queue by default
-                print("Upload Progress: \(progress.fractionCompleted)")
+        var audioFilename = getDocumentsDirectory().appendingPathComponent("recording.wav")
+        Alamofire.request("http://163.239.169.54:5000/uploads").responseString { response in
+            print(response.request as Any)  // original URL request
+            print(response.response as Any) // HTTP URL response
+            print(response.data as Any)     // server data
+            if ((response.response!.statusCode) >= 200 && (response.response!.statusCode) < 300){
+                print("Success")
             }
-            .downloadProgress { progress in // main queue by default
-                print("Download Progress: \(progress.fractionCompleted)")
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
             }
-            .responseJSON { response in
-                print("response : ",response)
         }
+        
+              //  let fileURL = Bundle.main.url(forResource:"document",withExtension:"pcm")
+        var serverURL : URLRequest
+
+        do{
+            try! serverURL =  URLRequest(url: "http://163.239.169.54:5000/uploads", method: .get)
+        }
+        catch{}
+       
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(audioFilename, withName: "file")
+        },
+            to: "http://163.239.169.54:5000/uploads",
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        //print(response["Result"])
+                        //print(response.result)
+                        print(response.result.value as! Int)
+                        self.resultLabel.text = "\(response.result.value)"
+                        print(self.resultLabel.text )
+                    }
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        }
+        )
+ 
+ 
+ 
         uploadBtn.setTitle("Upload", for: .normal)
     }
     
@@ -74,10 +106,10 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request("http://163.239.169.54:5000/uploads").responseJSON { response in
-            print(response.request)  // original URL request
-            print(response.response) // HTTP URL response
-            print(response.data)     // server data
+        Alamofire.request("http://163.239.169.54:5000/uploads").responseString { response in
+            print(response.request as Any)  // original URL request
+            print(response.response as Any) // HTTP URL response
+            print(response.data as Any)     // server data
             if ((response.response!.statusCode) >= 200 && (response.response!.statusCode) < 300){
                 print("Success")
             }
@@ -94,9 +126,9 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { [unowned self] allowed in
+            recordingSession.requestRecordPermission() { [unowned self] allowed in          // 마이크 승인여부
                 DispatchQueue.main.async {
-                    if allowed {
+                    if allowed {    // 허용되어있으면 loadUI실행
                         self.loadRecordingUI()
                     } else {
                         // failed to record!
@@ -110,7 +142,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         // Do any additional setup after loading the view.
     }
     
-    func preparePlayer(){
+    func preparePlayer(){   //재생할 파일의 url과 볼륨등을 설정할 수 있음
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.wav")
         
         do{audioPlayer = try AVAudioPlayer(contentsOf: audioFilename)}
@@ -120,20 +152,28 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()
-        audioPlayer.volume = 1.0
+        audioPlayer.volume = 10.0
     }
 
     
     func startRecording() {
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.wav")
+        /*
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatLinearPCM),
+            AVSampleRateKey: 44100,
+            AVNumberOfChannelsKey: 2,
+            AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue,
+            AVEncoderBitRatePerChannelKey : 16
+        ]*/
+
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatULaw),
-            AVSampleRateKey: 32000,
+            AVSampleRateKey: 44100,
             AVNumberOfChannelsKey: 2,
             AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue
         ]
-        
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
@@ -146,8 +186,10 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     }
     
     func finishRecording(success: Bool) {
+        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.wav")
         audioRecorder.stop()
         audioRecorder = nil
+        print(audioFilename)
         
         if success {
             recordButton.setTitle("Rec", for: .normal)

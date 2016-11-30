@@ -1,3 +1,6 @@
 [submodule "Alamofire"]
 	path = Alamofire
 	url = https://github.com/Alamofire/Alamofire.git
+[submodule "FDSoundActivatedRecorder"]
+	path = FDSoundActivatedRecorder
+	url = https://github.com/fulldecent/FDSoundActivatedRecorder.git

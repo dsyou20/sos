@@ -101,7 +101,7 @@ class ViewController: UIViewController,SFSpeechRecognizerDelegate {
             var isFinal = false
             
             if result != nil {
-                
+                print(result?.bestTranscription.formattedString)
                 self.textView.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }

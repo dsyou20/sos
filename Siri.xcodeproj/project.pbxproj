@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		286E06EC1DE9888800472FA2 /* Newrecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E06EB1DE9888800472FA2 /* Newrecord.swift */; };
+		2880F0F21DEB4FBD00A169B4 /* Filelist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2880F0F11DEB4FBD00A169B4 /* Filelist.swift */; };
+		2884C1AC1DECB1320088C957 /* FDSoundActivatedRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2884C18E1DECB10A0088C957 /* FDSoundActivatedRecorder.framework */; };
+		2884C1AD1DECB1470088C957 /* FDSoundActivatedRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2884C18E1DECB10A0088C957 /* FDSoundActivatedRecorder.framework */; };
+		2884C1AE1DECB1470088C957 /* FDSoundActivatedRecorder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2884C18E1DECB10A0088C957 /* FDSoundActivatedRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28C1E27F1DEB091400578160 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286E06F91DEA0E1900472FA2 /* Alamofire.framework */; };
 		28C1E2851DEB094900578160 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286E06F91DEA0E1900472FA2 /* Alamofire.framework */; };
 		28C1E2861DEB094900578160 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 286E06F91DEA0E1900472FA2 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		28DBF74C1DE6FC3800093CC5 /* unusedRecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DBF74B1DE6FC3800093CC5 /* unusedRecoder.swift */; };
 		805027EB1D389E5700CE3F1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805027EA1D389E5700CE3F1F /* AppDelegate.swift */; };
 		805027ED1D389E5700CE3F1F /* Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805027EC1D389E5700CE3F1F /* Recognizer.swift */; };
 		805027F01D389E5700CE3F1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 805027EE1D389E5700CE3F1F /* Main.storyboard */; };
@@ -69,6 +72,34 @@
 			remoteGlobalIDString = E4202FE01B667AA100C997FB;
 			remoteInfo = "Alamofire watchOS";
 		};
+		2884C18D1DECB10A0088C957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D9A472FE1CBC603B001D3A59;
+			remoteInfo = FDSoundActivatedRecorder;
+		};
+		2884C18F1DECB10A0088C957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D9A473081CBC603B001D3A59;
+			remoteInfo = FDSoundActivatedRecorderTests;
+		};
+		2884C1AA1DECB12C0088C957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D9A472FD1CBC603B001D3A59;
+			remoteInfo = FDSoundActivatedRecorder;
+		};
+		2884C1AF1DECB1470088C957 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D9A472FD1CBC603B001D3A59;
+			remoteInfo = FDSoundActivatedRecorder;
+		};
 		28C1E2821DEB093400578160 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 286E06ED1DEA0E1900472FA2 /* Alamofire.xcodeproj */;
@@ -92,6 +123,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2884C1AE1DECB1470088C957 /* FDSoundActivatedRecorder.framework in Embed Frameworks */,
 				28C1E2861DEB094900578160 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -102,7 +134,8 @@
 /* Begin PBXFileReference section */
 		286E06EB1DE9888800472FA2 /* Newrecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Newrecord.swift; sourceTree = "<group>"; };
 		286E06ED1DEA0E1900472FA2 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		28DBF74B1DE6FC3800093CC5 /* unusedRecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = unusedRecoder.swift; path = ../unusedRecoder.swift; sourceTree = "<group>"; };
+		2880F0F11DEB4FBD00A169B4 /* Filelist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filelist.swift; sourceTree = "<group>"; };
+		2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FDSoundActivatedRecorder.xcodeproj; path = FDSoundActivatedRecorder/FDSoundActivatedRecorder/FDSoundActivatedRecorder.xcodeproj; sourceTree = SOURCE_ROOT; };
 		805027E71D389E5700CE3F1F /* Siri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Siri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		805027EA1D389E5700CE3F1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		805027EC1D389E5700CE3F1F /* Recognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recognizer.swift; sourceTree = "<group>"; };
@@ -117,6 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2884C1AD1DECB1470088C957 /* FDSoundActivatedRecorder.framework in Frameworks */,
+				2884C1AC1DECB1320088C957 /* FDSoundActivatedRecorder.framework in Frameworks */,
 				28C1E27F1DEB091400578160 /* Alamofire.framework in Frameworks */,
 				28C1E2851DEB094900578160 /* Alamofire.framework in Frameworks */,
 			);
@@ -135,6 +170,15 @@
 				286E07011DEA0E1900472FA2 /* Alamofire.framework */,
 				286E07031DEA0E1900472FA2 /* Alamofire tvOS Tests.xctest */,
 				286E07051DEA0E1900472FA2 /* Alamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2884C1821DECB10A0088C957 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2884C18E1DECB10A0088C957 /* FDSoundActivatedRecorder.framework */,
+				2884C1901DECB10A0088C957 /* FDSoundActivatedRecorderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,14 +203,15 @@
 		805027E91D389E5700CE3F1F /* Siri */ = {
 			isa = PBXGroup;
 			children = (
-				28DBF74B1DE6FC3800093CC5 /* unusedRecoder.swift */,
 				805027EA1D389E5700CE3F1F /* AppDelegate.swift */,
 				805027EC1D389E5700CE3F1F /* Recognizer.swift */,
 				805027EE1D389E5700CE3F1F /* Main.storyboard */,
+				2880F0F11DEB4FBD00A169B4 /* Filelist.swift */,
 				286E06EB1DE9888800472FA2 /* Newrecord.swift */,
 				805027F11D389E5700CE3F1F /* Assets.xcassets */,
 				805027F31D389E5700CE3F1F /* LaunchScreen.storyboard */,
 				805027F61D389E5700CE3F1F /* Info.plist */,
+				2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */,
 			);
 			path = Siri;
 			sourceTree = "<group>";
@@ -186,8 +231,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				2884C1AB1DECB12C0088C957 /* PBXTargetDependency */,
 				28C1E2831DEB093400578160 /* PBXTargetDependency */,
 				28C1E2881DEB094900578160 /* PBXTargetDependency */,
+				2884C1B01DECB1470088C957 /* PBXTargetDependency */,
 			);
 			name = Siri;
 			productName = Siri;
@@ -227,6 +274,10 @@
 				{
 					ProductGroup = 286E06EE1DEA0E1900472FA2 /* Products */;
 					ProjectRef = 286E06ED1DEA0E1900472FA2 /* Alamofire.xcodeproj */;
+				},
+				{
+					ProductGroup = 2884C1821DECB10A0088C957 /* Products */;
+					ProjectRef = 2884C1811DECB10A0088C957 /* FDSoundActivatedRecorder.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -286,6 +337,20 @@
 			remoteRef = 286E07041DEA0E1900472FA2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		2884C18E1DECB10A0088C957 /* FDSoundActivatedRecorder.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FDSoundActivatedRecorder.framework;
+			remoteRef = 2884C18D1DECB10A0088C957 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2884C1901DECB10A0088C957 /* FDSoundActivatedRecorderTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FDSoundActivatedRecorderTests.xctest;
+			remoteRef = 2884C18F1DECB10A0088C957 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -306,9 +371,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28DBF74C1DE6FC3800093CC5 /* unusedRecoder.swift in Sources */,
 				805027ED1D389E5700CE3F1F /* Recognizer.swift in Sources */,
 				805027EB1D389E5700CE3F1F /* AppDelegate.swift in Sources */,
+				2880F0F21DEB4FBD00A169B4 /* Filelist.swift in Sources */,
 				286E06EC1DE9888800472FA2 /* Newrecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +381,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2884C1AB1DECB12C0088C957 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FDSoundActivatedRecorder;
+			targetProxy = 2884C1AA1DECB12C0088C957 /* PBXContainerItemProxy */;
+		};
+		2884C1B01DECB1470088C957 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FDSoundActivatedRecorder;
+			targetProxy = 2884C1AF1DECB1470088C957 /* PBXContainerItemProxy */;
+		};
 		28C1E2831DEB093400578160 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Alamofire iOS";
