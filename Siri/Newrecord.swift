@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import Alamofire
-
+import Charts
 
 class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate {
     
@@ -17,7 +17,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     
     let answer = ["물 흐르는 소리","아이 소리","파열음","빗 소리","끓는 소리","알람","전화벨 소리","청소기","헤어드라이어","고양이 소리"]
     //TODO : Upload....
-    
+    //var prob: [Double]!
     
     //var audioFilename = getDocumentsDirectory().appendingPathComponent("recording.pcm")
 
@@ -32,6 +32,9 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     var audioPlayer : AVAudioPlayer!
     
     @IBOutlet weak var playBtn: UIButton!
+    
+    @IBOutlet weak var barChartView: BarChartView!
+    
     
     @IBAction func Play(_ sender: UIButton) {
         
@@ -97,6 +100,11 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
                         self.resultLabel.text = "\(self.answer[jsondata["classification"] as! Int])"
                         self.back.image=UIImage(named: "\(jsondata["classification"] as! Int)")
                         
+                       let prob = jsondata["prob"] as! [Double]
+                        debugPrint(prob)
+                        self.setChart(dataPoints: self.answer, values: prob)
+                        
+                        
                     }
                 case .failure(let encodingError):
                     print(encodingError)
@@ -116,7 +124,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         self.recordButton.tintColor = UIColor.red
         self.playBtn.tintColor = UIColor.red
         self.uploadBtn.tintColor = UIColor.red
-        
+        barChartView.noDataText = ""
         
        /* let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = UIImage(named: "background")//if its in images.xcassets
@@ -258,5 +266,28 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         playBtn.setTitle("Play", for: .normal)
     }
     
+    func setChart(dataPoints: [String], values: [Double]) {
+        
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        var counter = 0.0
+        
+        for i in 0..<dataPoints.count {
+            //let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            //let dataEntry = BarChartDataEntry(x: values[i], y: i)
+            //let dataEntry = BarChartDataEntry(value: values[i], xIndex: i as Double)
+            counter += 1.0
+            let dataEntry = BarChartDataEntry(x: values[i], y: counter)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "prob")
+        //let chartData = BarChartData(xVals: categories, dataSet: chartDataSet)
+        let chartData = BarChartData()
+        chartData.addDataSet(chartDataSet)
+        barChartView.data = chartData
+        
+    }
 
 }
