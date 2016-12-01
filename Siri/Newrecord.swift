@@ -169,9 +169,9 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
 
         
         let settings = [
-            AVFormatIDKey: Int(kAudioFormatULaw),
+            AVFormatIDKey: Int(kAudioFormatLinearPCM),
             AVSampleRateKey: 44100,
-            AVNumberOfChannelsKey: 2,
+            AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.max.rawValue
         ]
         do {
