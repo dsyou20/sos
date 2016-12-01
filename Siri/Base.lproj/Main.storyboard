@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,7 +53,7 @@
                             <outlet property="delegate" destination="Hes-7H-ByH" id="v3R-Px-hcb"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="파일리스트" id="5ko-76-fol"/>
+                    <tabBarItem key="tabBarItem" title="파일리스트" image="document" id="5ko-76-fol"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qy5-vH-CSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,39 +71,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0B-LK-hQB">
-                                <rect key="frame" x="241" y="243" width="71" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vPV-iS-rvd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0B-LK-hQB">
+                                <rect key="frame" x="137" y="555" width="100" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="Play:" destination="Ias-eh-a6d" eventType="touchUpInside" id="Stx-Hy-peW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLp-Vm-lFX">
-                                <rect key="frame" x="148" y="396" width="79" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Upload"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLp-Vm-lFX">
+                                <rect key="frame" x="259" y="555" width="100" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="Upload:" destination="Ias-eh-a6d" eventType="touchUpInside" id="sUm-qE-pX2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPa-Xm-Pnc">
-                                <rect key="frame" x="67" y="243" width="84" height="54"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" title="Rec"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPa-Xm-Pnc">
+                                <rect key="frame" x="16" y="555" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jDP-ao-Rd1"/>
+                                    <constraint firstAttribute="width" constant="100" id="mR9-tQ-Rsq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Rec">
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="파일분류" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbH-GN-DyB">
-                                <rect key="frame" x="126" y="367" width="123" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인식결과" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbH-GN-DyB">
+                                <rect key="frame" x="87" y="510" width="200" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="음향인식" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3P-kp-W08">
+                                <rect key="frame" x="122" y="28" width="131" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="REb-zQ-xw5"/>
+                                    <constraint firstAttribute="width" constant="131" id="Vqh-Uv-uaH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="top" secondItem="TLp-Vm-lFX" secondAttribute="top" id="184-Ve-NVd"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="baseline" secondItem="TLp-Vm-lFX" secondAttribute="baseline" id="3Op-eO-Jqy"/>
+                            <constraint firstItem="I3P-kp-W08" firstAttribute="top" secondItem="cpV-fZ-jpE" secondAttribute="bottom" constant="8" symbolic="YES" id="BAE-ZK-aKP"/>
+                            <constraint firstItem="TLp-Vm-lFX" firstAttribute="trailing" secondItem="tA1-n7-bPg" secondAttribute="trailingMargin" id="EAA-Ps-fBL"/>
+                            <constraint firstAttribute="bottom" secondItem="vPV-iS-rvd" secondAttribute="bottom" id="Ef2-wt-5gd"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="centerX" secondItem="RbH-GN-DyB" secondAttribute="centerX" id="J7q-zg-IDZ"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leadingMargin" id="Kv7-aL-0Bo"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="firstBaseline" secondItem="c0B-LK-hQB" secondAttribute="firstBaseline" id="LGI-NZ-mYB"/>
+                            <constraint firstItem="TLp-Vm-lFX" firstAttribute="leading" secondItem="c0B-LK-hQB" secondAttribute="trailing" constant="22" id="Pv3-Mw-0xK"/>
+                            <constraint firstItem="RbH-GN-DyB" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leadingMargin" constant="71" id="UUE-hh-7GD"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leading" id="W0G-Vb-jPu"/>
+                            <constraint firstItem="I3P-kp-W08" firstAttribute="centerX" secondItem="RbH-GN-DyB" secondAttribute="centerX" id="YaN-VM-uYL"/>
+                            <constraint firstAttribute="trailing" secondItem="vPV-iS-rvd" secondAttribute="trailing" id="bH1-bZ-2lA"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="baseline" secondItem="c0B-LK-hQB" secondAttribute="baseline" id="e9l-Gl-hGT"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="top" secondItem="c0B-LK-hQB" secondAttribute="top" id="eWB-Rm-5HU"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="top" secondItem="tA1-n7-bPg" secondAttribute="top" id="gSw-yS-xjQ"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="firstBaseline" secondItem="TLp-Vm-lFX" secondAttribute="firstBaseline" id="hTU-Ga-mcY"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="leading" secondItem="GPa-Xm-Pnc" secondAttribute="trailing" constant="21" id="iHt-b6-Ods"/>
+                            <constraint firstItem="RbH-GN-DyB" firstAttribute="centerX" secondItem="c0B-LK-hQB" secondAttribute="centerX" id="oGo-Tx-veC"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="top" secondItem="RbH-GN-DyB" secondAttribute="bottom" constant="24" id="sI0-KH-WhT"/>
+                            <constraint firstItem="0Pw-rQ-D90" firstAttribute="top" secondItem="GPa-Xm-Pnc" secondAttribute="bottom" constant="13" id="yTr-Dd-nU8"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rec" id="gA5-Qv-kmc"/>
+                    <tabBarItem key="tabBarItem" title="Rec" image="microphone" id="gA5-Qv-kmc"/>
                     <connections>
+                        <outlet property="back" destination="vPV-iS-rvd" id="Ugq-jj-21r"/>
                         <outlet property="playBtn" destination="c0B-LK-hQB" id="uG7-7y-oNT"/>
                         <outlet property="recordButton" destination="GPa-Xm-Pnc" id="wCd-Zj-VIO"/>
                         <outlet property="resultLabel" destination="RbH-GN-DyB" id="TPq-bT-MRu"/>
@@ -164,7 +214,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wF6-O8-cvx" secondAttribute="bottom" constant="30" id="rMQ-yb-tCj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="음성인식" id="40W-x3-2Mg"/>
+                    <tabBarItem key="tabBarItem" title="음성인식" image="brain" id="40W-x3-2Mg"/>
                     <connections>
                         <outlet property="microphoneButton" destination="wF6-O8-cvx" id="V9V-fM-n1g"/>
                         <outlet property="textView" destination="RL2-YE-xML" id="WCI-r4-v5k"/>
@@ -175,4 +225,9 @@
             <point key="canvasLocation" x="-258" y="-597"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="brain" width="30" height="30"/>
+        <image name="document" width="30" height="30"/>
+        <image name="microphone" width="30" height="30"/>
+    </resources>
 </document>

@@ -12,14 +12,17 @@ import Alamofire
 
 
 class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate {
-
     
+    
+    
+    let answer = ["물 흐르는 소리","아이 소리","파열음","빗 소리","끓는 소리","알람","전화벨 소리","청소기","헤어드라이어","고양이 소리"]
     //TODO : Upload....
     
     
     //var audioFilename = getDocumentsDirectory().appendingPathComponent("recording.pcm")
 
     
+    @IBOutlet weak var back: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var uploadBtn: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
@@ -40,7 +43,8 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
             audioPlayer.play()
         }
         else{
-            sender.setTitle("Play", for: .normal)
+            audioPlayer.stop()
+            self.audioPlayerDidFinishPlaying(audioPlayer, successfully: true)
             
         }
 
@@ -54,7 +58,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
  
     func upload() {
         var audioFilename = getDocumentsDirectory().appendingPathComponent("recording.wav")
-        Alamofire.request("http://163.239.169.54:5000/uploads").responseString { response in
+            Alamofire.request("http://163.239.169.54:5000/uploads").responseString { response in
             print(response.request as Any)  // original URL request
             print(response.response as Any) // HTTP URL response
             print(response.data as Any)     // server data
@@ -87,9 +91,12 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
                     upload.responseJSON { response in
                         //print(response["Result"])
                         //print(response.result)
-                        print(response.result.value as! Int)
-                        self.resultLabel.text = "\(response.result.value)"
-                        print(self.resultLabel.text )
+                        let data = response.result.value
+                        let jsondata = data as! NSDictionary
+                        
+                        self.resultLabel.text = "\(self.answer[jsondata["classification"] as! Int])"
+                        self.back.image=UIImage(named: "\(jsondata["classification"] as! Int)")
+                        
                     }
                 case .failure(let encodingError):
                     print(encodingError)
@@ -106,6 +113,23 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.recordButton.tintColor = UIColor.red
+        self.playBtn.tintColor = UIColor.red
+        self.uploadBtn.tintColor = UIColor.red
+        
+        
+       /* let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = UIImage(named: "background")//if its in images.xcassets
+        self.view.addSubview(imageView)
+        self.view.sendSubview(toBack: imageView)*/
+        
+        self.back.image = UIImage(named: "background")
+        
+        /*
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background")
+        self.view.insertSubview(backgroundImage, at: 0)*/
+        /*
         Alamofire.request("http://163.239.169.54:5000/uploads").responseString { response in
             print(response.request as Any)  // original URL request
             print(response.response as Any) // HTTP URL response
@@ -117,7 +141,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
             if let JSON = response.result.value {
                 print("JSON: \(JSON)")
             }
-        }
+        }*/
         
         
         
