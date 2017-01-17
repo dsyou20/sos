@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lAd-zi-oa0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lAd-zi-oa0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,8 +21,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="z53-zY-o4d"/>
                         <segue destination="Ias-eh-a6d" kind="relationship" relationship="viewControllers" id="w2S-ZO-8Dq"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="z53-zY-o4d"/>
                         <segue destination="Hes-7H-ByH" kind="relationship" relationship="viewControllers" id="dI7-uF-08F"/>
                     </connections>
                 </tabBarController>
@@ -59,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="-166" y="164"/>
         </scene>
-        <!--Rec-->
+        <!--음향인식-->
         <scene sceneID="0YJ-zt-OXG">
             <objects>
                 <viewController id="Ias-eh-a6d" customClass="Newrecord" customModule="Siri" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vPV-iS-rvd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0B-LK-hQB">
                                 <rect key="frame" x="137" y="555" width="100" height="50"/>
@@ -99,8 +99,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPa-Xm-Pnc">
                                 <rect key="frame" x="16" y="555" width="100" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="7nr-og-yIz"/>
-                                    <constraint firstAttribute="height" constant="50" id="NAd-II-hKj"/>
+                                    <constraint firstAttribute="width" constant="100" id="1Gy-La-g57"/>
+                                    <constraint firstAttribute="height" constant="50" id="zMJ-5Y-ks9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
@@ -108,63 +108,32 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인식결과" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbH-GN-DyB">
-                                <rect key="frame" x="87" y="510" width="200" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="음향인식" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3P-kp-W08">
-                                <rect key="frame" x="122" y="28" width="131" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="4OV-Da-9fh"/>
-                                    <constraint firstAttribute="width" constant="131" id="inM-Vh-uXy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSR-QQ-GM0" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="39" y="374" width="296" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0Pw-rQ-D90" firstAttribute="top" secondItem="GPa-Xm-Pnc" secondAttribute="bottom" constant="13" id="0ce-HZ-s9j"/>
-                            <constraint firstItem="fSR-QQ-GM0" firstAttribute="top" secondItem="tA1-n7-bPg" secondAttribute="top" constant="374" id="2Bp-ub-mmP"/>
-                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="top" secondItem="c0B-LK-hQB" secondAttribute="top" id="2Lc-4J-96t"/>
-                            <constraint firstItem="c0B-LK-hQB" firstAttribute="firstBaseline" secondItem="TLp-Vm-lFX" secondAttribute="firstBaseline" id="494-uW-IPb"/>
-                            <constraint firstItem="RbH-GN-DyB" firstAttribute="top" secondItem="fSR-QQ-GM0" secondAttribute="bottom" constant="8" symbolic="YES" id="4DY-gk-2wE"/>
-                            <constraint firstItem="TLp-Vm-lFX" firstAttribute="trailing" secondItem="tA1-n7-bPg" secondAttribute="trailingMargin" id="6Fm-V3-yvp"/>
-                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="baseline" secondItem="c0B-LK-hQB" secondAttribute="baseline" id="9Us-2K-2Kh"/>
-                            <constraint firstItem="I3P-kp-W08" firstAttribute="top" secondItem="cpV-fZ-jpE" secondAttribute="bottom" constant="8" symbolic="YES" id="B4z-DP-0sV"/>
-                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="firstBaseline" secondItem="c0B-LK-hQB" secondAttribute="firstBaseline" id="GFH-Kz-Gbc"/>
-                            <constraint firstItem="TLp-Vm-lFX" firstAttribute="leading" secondItem="c0B-LK-hQB" secondAttribute="trailing" constant="22" id="GmS-01-KYe"/>
-                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="top" secondItem="RbH-GN-DyB" secondAttribute="bottom" constant="24" id="IdP-ZM-sgd"/>
-                            <constraint firstItem="fSR-QQ-GM0" firstAttribute="centerX" secondItem="RbH-GN-DyB" secondAttribute="centerX" id="N3Z-fP-uzb"/>
-                            <constraint firstItem="I3P-kp-W08" firstAttribute="centerX" secondItem="fSR-QQ-GM0" secondAttribute="centerX" id="OZ1-yc-50C"/>
-                            <constraint firstItem="c0B-LK-hQB" firstAttribute="leading" secondItem="GPa-Xm-Pnc" secondAttribute="trailing" constant="21" id="WiA-Vi-hwR"/>
-                            <constraint firstItem="vPV-iS-rvd" firstAttribute="top" secondItem="tA1-n7-bPg" secondAttribute="top" id="eeV-4A-mIS"/>
-                            <constraint firstItem="vPV-iS-rvd" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leading" id="fuE-sj-pQe"/>
-                            <constraint firstItem="c0B-LK-hQB" firstAttribute="baseline" secondItem="TLp-Vm-lFX" secondAttribute="baseline" id="fvv-a8-n7A"/>
-                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leadingMargin" id="gGD-Zf-LQb"/>
-                            <constraint firstItem="RbH-GN-DyB" firstAttribute="centerX" secondItem="c0B-LK-hQB" secondAttribute="centerX" id="gOq-8t-9Ck"/>
-                            <constraint firstAttribute="trailing" secondItem="vPV-iS-rvd" secondAttribute="trailing" id="glt-i2-OkL"/>
-                            <constraint firstItem="c0B-LK-hQB" firstAttribute="top" secondItem="TLp-Vm-lFX" secondAttribute="top" id="kdB-zn-am1"/>
-                            <constraint firstItem="fSR-QQ-GM0" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leadingMargin" constant="23" id="qGd-Ij-c1s"/>
-                            <constraint firstItem="vPV-iS-rvd" firstAttribute="centerX" secondItem="c0B-LK-hQB" secondAttribute="centerX" id="rC8-1l-70K"/>
-                            <constraint firstAttribute="bottom" secondItem="vPV-iS-rvd" secondAttribute="bottom" id="smH-Wx-5al"/>
-                            <constraint firstItem="RbH-GN-DyB" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leadingMargin" constant="71" id="xbz-dT-GEI"/>
+                            <constraint firstItem="TLp-Vm-lFX" firstAttribute="leading" secondItem="c0B-LK-hQB" secondAttribute="trailing" constant="22" id="4L0-ur-CaU"/>
+                            <constraint firstAttribute="trailing" secondItem="vPV-iS-rvd" secondAttribute="trailing" id="6Yg-Rd-HhM"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="firstBaseline" secondItem="c0B-LK-hQB" secondAttribute="firstBaseline" id="6tx-pB-F69"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="baseline" secondItem="TLp-Vm-lFX" secondAttribute="baseline" id="9oC-3Y-ixA"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="bottom" secondItem="0Pw-rQ-D90" secondAttribute="top" id="BnX-oC-8XU"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="top" secondItem="tA1-n7-bPg" secondAttribute="top" id="Bxh-EB-NBa"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="centerX" secondItem="c0B-LK-hQB" secondAttribute="centerX" id="Id7-nI-IvF"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leadingMargin" id="IyK-gE-DI7"/>
+                            <constraint firstItem="TLp-Vm-lFX" firstAttribute="trailing" secondItem="tA1-n7-bPg" secondAttribute="trailingMargin" id="NSD-5r-Q46"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="top" secondItem="TLp-Vm-lFX" secondAttribute="top" id="Ti4-0f-DNI"/>
+                            <constraint firstItem="0Pw-rQ-D90" firstAttribute="top" secondItem="GPa-Xm-Pnc" secondAttribute="bottom" constant="13" id="Um8-lK-Wua"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="leading" secondItem="GPa-Xm-Pnc" secondAttribute="trailing" constant="21" id="WfU-Vi-m6v"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="top" secondItem="c0B-LK-hQB" secondAttribute="top" id="cdu-rg-e9v"/>
+                            <constraint firstItem="vPV-iS-rvd" firstAttribute="leading" secondItem="tA1-n7-bPg" secondAttribute="leading" id="e2g-9x-9tv"/>
+                            <constraint firstItem="c0B-LK-hQB" firstAttribute="firstBaseline" secondItem="TLp-Vm-lFX" secondAttribute="firstBaseline" id="fSs-of-eag"/>
+                            <constraint firstItem="GPa-Xm-Pnc" firstAttribute="baseline" secondItem="c0B-LK-hQB" secondAttribute="baseline" id="mFO-4p-ndY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rec" image="microphone" id="gA5-Qv-kmc"/>
+                    <tabBarItem key="tabBarItem" title="음향인식" image="microphone" id="gA5-Qv-kmc"/>
                     <connections>
                         <outlet property="back" destination="vPV-iS-rvd" id="Ugq-jj-21r"/>
-                        <outlet property="barChartView" destination="fSR-QQ-GM0" id="9AT-X2-BBb"/>
                         <outlet property="playBtn" destination="c0B-LK-hQB" id="uG7-7y-oNT"/>
                         <outlet property="recordButton" destination="GPa-Xm-Pnc" id="wCd-Zj-VIO"/>
-                        <outlet property="resultLabel" destination="RbH-GN-DyB" id="TPq-bT-MRu"/>
                         <outlet property="uploadBtn" destination="TLp-Vm-lFX" id="xoK-Vw-Huh"/>
                     </connections>
                 </viewController>

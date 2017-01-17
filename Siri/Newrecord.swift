@@ -10,13 +10,18 @@ import UIKit
 import AVFoundation
 import Alamofire
 import Charts
+import QuartzCore
 
 class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate {
     
     
     
     let answer = ["물 흐르는 소리","아이 소리","파열음","빗 소리","끓는 소리","알람","전화벨 소리","청소기","헤어드라이어","고양이 소리"]
+    let corlor_set = [0xFF9CBB,0xFF6A89,0xFF9E9B,0xffc000,0xe87100,0x7f654c,0xc5a52,0xff8a19,0x00cdff,0x00ebff]
     let category = ["0","1","2","3","4","5","6","7","8","9"]
+    var prob : [Double]!
+    let ll = ChartLimitLine(limit: 0.4, label: "")
+   
     //TODO : Upload....
     //var prob: [Double]!
     
@@ -98,14 +103,21 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
                         let data = response.result.value
                         let jsondata = data as! NSDictionary
                         
-                        self.resultLabel.text = "\(self.answer[jsondata["classification"] as! Int])"
-                        self.back.image=UIImage(named: "\(jsondata["classification"] as! Int)")
+                       // self.resultLabel.text = "(\(jsondata["classification"] as! Int))\(self.answer[jsondata["classification"] as! Int])"
                         
-                       let prob = jsondata["prob"] as! [Double]
-                        debugPrint(prob)
-                        self.setChart(dataPoints: self.category, values: prob)
-                        self.barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+                        UIView.transition(with: self.back, duration: 5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {self.back.image = UIImage(named: "l\(jsondata["classification"] as! Int)")}, completion: nil)
+                        //self.back.image = nil
+                        /*UIView.transition(with: self.back, duration: 3, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {self.back.backgroundColor = self.UIColorFromHex(rgbValue: UInt32(self.corlor_set[jsondata["classification"] as! Int]))})
+                        */
+                        //self.back.image=UIImage(named: "\(jsondata["classification"] as! Int)")
                         
+                        self.prob = jsondata["prob"] as! [Double]
+                        debugPrint(self.prob)
+                        /*
+                        self.setChart(dataPoints: self.category, values: self.prob)
+                        
+                        self.barChartView.animate(xAxisDuration: 0.0, yAxisDuration: 3.0)
+                        */
                         
                     }
                 case .failure(let encodingError):
@@ -122,12 +134,19 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.recordButton.tintColor = UIColor.red
-        self.playBtn.tintColor = UIColor.red
-        self.uploadBtn.tintColor = UIColor.red
+        recordingSession = AVAudioSession.sharedInstance()
+        try! recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        try! recordingSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+        self.recordButton.tintColor = UIColor.white
+        self.playBtn.tintColor = UIColor.white
+        self.uploadBtn.tintColor = UIColor.white
+        /*
         barChartView.sendSubview(toBack: self.view)
         barChartView.setScaleEnabled(true)
+        barChartView.backgroundColor = UIColor.clear
+        barChartView.noDataText = ""
+        */
+        
 
         
        /* let imageView = UIImageView(frame: self.view.bounds)
@@ -137,27 +156,11 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         
         self.back.image = UIImage(named: "background")
         
-        /*
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background")
-        self.view.insertSubview(backgroundImage, at: 0)*/
-        /*
-        Alamofire.request("http://163.239.169.54:5000/uploads").responseString { response in
-            print(response.request as Any)  // original URL request
-            print(response.response as Any) // HTTP URL response
-            print(response.data as Any)     // server data
-            if ((response.response!.statusCode) >= 200 && (response.response!.statusCode) < 300){
-                print("Success")
-            }
-            
-            if let JSON = response.result.value {
-                print("JSON: \(JSON)")
-            }
-        }*/
+      
         
         
         
-        recordingSession = AVAudioSession.sharedInstance()
+    
         
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
@@ -188,7 +191,8 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
         
         audioPlayer.delegate = self
         audioPlayer.prepareToPlay()
-        audioPlayer.volume = 10.0
+        
+        audioPlayer.volume = 1.0
     }
 
     
@@ -272,7 +276,7 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
     
     func setChart(dataPoints: [String], values: [Double]) {
         
-        
+        barChartView.backgroundColor = UIColor.white
         var dataEntries: [BarChartDataEntry] = []
         
         var counter = 0.0
@@ -288,13 +292,33 @@ class Newrecord: UIViewController,AVAudioPlayerDelegate,AVAudioRecorderDelegate 
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "prob")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "확률")
         //let chartData = BarChartData(xVals: categories, dataSet: chartDataSet)
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
         chartData.barWidth = 0.7
+        
         barChartView.data = chartData
+        barChartView.drawBordersEnabled = true
+        barChartView.borderLineWidth = 1
+        barChartView.borderColor = UIColor.black
+        self.barChartView.rightAxis.addLimitLine(self.ll)
+        barChartView.xAxis.drawGridLinesEnabled = false
+        barChartView.chartDescription?.text = ""    //remove Description label
+        
         
     }
+        
+        func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+            let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+            let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+            let blue = CGFloat(rgbValue & 0xFF)/256.0
+            
+            return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+        }
+        
+        
 
 }
+
+
